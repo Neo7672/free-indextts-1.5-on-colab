@@ -22,6 +22,19 @@ use IndexTTS for free on google colab.
 
 已完成静态检查，尚未在真实 Colab GPU 上完成端到端语音生成验证。
 
+## 启动日志修复（2026-09-13）
+
+已修复子进程日志没有显示在 Colab 输出区的问题。安装和启动日志现在会实时显示；启动时显示导入/模型加载阶段，30 秒无新日志时显示进程状态。WebUI 日志同时保存到 `/content/index-tts-2.0-pinned/webui-colab.log`。
+
+如果你已经运行旧版，停下第 5 格后，在同一个运行时新增代码格运行下面两行即可显示真实启动输出，无需重新安装或重新下载主模型：
+
+```python
+%cd /content/index-tts-2.0-pinned
+!.venv/bin/python -u webui_colab_2_0.py --fp16 --model_dir checkpoints
+```
+
+此修复解决日志不可见问题；实际加载或网络报错仍需根据显示的日志排查。
+
 ## 原有笔记本
 
 [原版 IndexTTS 2 笔记本（随官方最新提交变化，不锁定 2.0）](https://colab.research.google.com/github/Neo7672/free-indextts-1.5-on-colab/blob/main/index-tts-2-on-colab.ipynb)
