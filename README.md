@@ -22,6 +22,19 @@ use IndexTTS for free on google colab.
 
 已完成静态检查，尚未在真实 Colab GPU 上完成端到端语音生成验证。
 
+## IndexTTS 2.0 固定版本 · A100 版
+
+[在 Colab 打开 IndexTTS 2.0 A100 版](https://colab.research.google.com/github/Neo7672/free-indextts-1.5-on-colab/blob/main/index-tts-2.0-a100-on-colab.ipynb)
+
+选择「运行时 → 更改运行时类型 → A100 GPU」（需 Colab Pro / Pro+ 或计算单元），然后从上到下运行。代码与模型版本与固定版相同，另加：
+
+- 启动前确认 GPU 为 A100（计算能力 8.0），可用 `REQUIRE_A100` 关闭检查。
+- 启用 TF32；精度可选 `fp16`（默认）或 `fp32`。
+- 可选编译 BigVGAN CUDA 融合内核（sm_80），失败自动回退。
+- 独立目录 `/content/index-tts-2.0-a100`。
+
+尚未在真实 Colab A100 上完成端到端语音生成验证。
+
 ## 启动日志修复（2026-09-13）
 
 已修复子进程日志没有显示在 Colab 输出区的问题。安装和启动日志现在会实时显示；启动时显示导入/模型加载阶段，30 秒无新日志时显示进程状态。WebUI 日志同时保存到 `/content/index-tts-2.0-pinned/webui-colab.log`。
